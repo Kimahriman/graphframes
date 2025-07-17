@@ -55,6 +55,9 @@ ThisBuild / crossScalaVersions := scalaVersions
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := "4.8.10" // The maximal version that supports both 2.13.8 and 2.12.18
 
+// Don't publish the root aggregate project
+publishArtifact := false
+
 lazy val commonSetting = Seq(
   libraryDependencies ++= Seq(
     "org.apache.spark" %% "spark-graphx" % sparkVer % "provided" cross CrossVersion.for3Use2_13,
@@ -104,7 +107,7 @@ lazy val core = (project in file("core"))
   .settings(
     commonSetting,
     name := "graphframes-core",
-    moduleName := s"${name.value}-spark$sparkMajorVer",
+    moduleName := s"graphframes-spark$sparkMajorVer",
     // Export the JAR so that this can be excluded from shading in connect
     exportJars := true,
 
