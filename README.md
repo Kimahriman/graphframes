@@ -233,8 +233,7 @@ Relational Queries, Dave et al. 2016](https://people.eecs.berkeley.edu/~matei/pa
 
 ## Building and running unit tests
 
-To compile the core project, run `build/sbt package` from the project home directory.
-To compile the Spark Connect Plugin, run `build/sbt connect/package`
+To compile the project, run `build/sbt package` from the project home directory.
 
 ## Spark version compatibility
 

@@ -100,10 +100,10 @@ lazy val commonSetting = Seq(
     else
       "-Wunused:imports"))
 
-lazy val root = (project in file("."))
+lazy val core = (project in file("core"))
   .settings(
     commonSetting,
-    name := "graphframes",
+    name := "graphframes-core",
     moduleName := s"${name.value}-spark$sparkMajorVer",
     // Export the JAR so that this can be excluded from shading in connect
     exportJars := true,
@@ -122,8 +122,8 @@ lazy val root = (project in file("."))
     Compile / packageDoc / publishArtifact := true,
     Compile / packageSrc / publishArtifact := true)
 
-lazy val connect = (project in file("graphframes-connect"))
-  .dependsOn(root)
+lazy val connect = (project in file("connect"))
+  .dependsOn(core)
   .settings(
     name := s"graphframes-connect",
     moduleName := s"${name.value}-spark${sparkMajorVer}",
